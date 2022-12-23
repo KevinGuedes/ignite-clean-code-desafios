@@ -9,19 +9,19 @@ const user = {
 const necessaryHeight = 130
 const currentHour = new Date().getHours()
 
-const isParkOpened = currentHour > 9 && currentHour < 18
-if (!isParkOpened) {
+const isParkClosed = currentHour <= 9 && currentHour >= 18
+if (isParkClosed) {
   throw new Error('O parque está fechado!')
 }
 
-const userHasTicket = user.hasTicket
-if (!userHasTicket) {
+const hasTicket = user.hasTicket
+if (!hasTicket) {
   throw new Error('O Diego não possui um bilhete para entrar no parque!')
 }
 
-const isUserAbleToEnter = user.height > necessaryHeight
-if (!isUserAbleToEnter) {
+const isUserUnableToEnter = user.height < necessaryHeight
+if (isUserUnableToEnter) {
   throw new Error('O Diego não pode entrar no brinquedo!')
-} 
+}
 
 console.log('O Diego se divertiu muito! :)')
